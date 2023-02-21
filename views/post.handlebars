@@ -1,0 +1,66 @@
+{{#if logged_in}}
+<div class="row">
+  <div class="col-auto">
+    <h2>Hi, {{name}}!</h2>
+  </div>
+</div>
+
+<div class="row mt-4">
+  {{!-- <div class="col-md-6">
+    <h3>What's on your mind?</h3>
+
+    <form class="form newPost-form">
+      <div class="form-group">
+        <label for="post-title">Topic:</label>
+        <input class="form-input" type="text" id="post-title" name="post-title" />
+      </div>
+      <div class="form-group">
+        <label for="post">Description:</label>
+        <input class="form-input" type="text" id="post" name="post" placeholder="What's on your mind..."/>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" data-id="{{id}}">Create Post</button>
+      </div>
+    </form>
+  </div> --}}
+
+  {{#if profiles.length}}
+  <div class="col-md-6 postList-form">
+    <h3>Feed</h3>
+    <h4>Posted by: {{name}}</h4>
+    {{#each profiles as |profile|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4>
+            <a href="/profile/{{blog_id}}">
+            {{blog_title}}
+            </a>
+            {{!-- <a>{{profile.post}}</a> --}}
+        </h4>
+        <p>{{profile.post}}</p>
+        <h3>{{profile.date}}</h3>
+      </div>
+        <div class="col-md-4">
+         <button class="btn btn-sm btn-danger" data-id="{{profile.blog_id}}">DELETE</button>
+        </div>
+    </div>
+  </div>
+    {{/each}}
+    {{else}}
+    <p>{{name}} has no Post!</p>
+    {{!-- {{/if}} --}}
+    {{!-- {{#if comments.length}} --}}
+    {{!-- <div>
+        {{#each comments}}
+        <p>{{comment.blog_id}}</p>
+        {{/each}}
+    </div> --}}
+    <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{profile.blog_id}}">DELETE</button>
+    </div>
+  </div>
+  {{/if}}
+</div>
+{{/if}}
+
+{{!-- <script src="./js/profile.js"></script> --}}

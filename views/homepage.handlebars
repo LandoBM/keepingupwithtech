@@ -1,0 +1,10 @@
+<h1>Timeline</h1>
+
+{{#each profile}}
+<div>
+    <h2><a href="/profile/{{id}}">{{blog_title}} Posted on {{date}}</a></h2>
+    <h5>Posted by: {{user.name}}</h5>
+</div>
+{{else}}
+<h4>There are no up to date post!</h4>
+{{/each}}

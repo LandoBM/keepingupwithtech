@@ -1,0 +1,33 @@
+{
+  "name": "keepingupwithtech",
+  "version": "1.0.0",
+  "description": "blog site that allow users to create a profile, post articles, blog post, thoughts and opinions",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node seeds/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LandoBM/keepingupwithtech.git"
+  },
+  "author": "Landon Murray",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LandoBM/keepingupwithtech/issues"
+  },
+  "homepage": "https://github.com/LandoBM/keepingupwithtech#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "connect-session-sequelize": "^7.1.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.7",
+    "express-session": "^1.17.3",
+    "express.js": "^1.0.0",
+    "mysql2": "^3.1.0",
+    "node.js": "^0.0.1-security",
+    "sequelize": "^6.28.0"
+  }
+}
