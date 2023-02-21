@@ -1,17 +1,17 @@
 [
     {
         "user_id": 1,
-        "blog_id": 1,
-        "comment": "Tech is Awesome !!"
+        "post_id": 1,
+        "comment_text": "Tech is Awesome !!"
     },
     {
         "user_id": 2,
-        "blog_id": 2,
-        "comment": "Subscribing to this Tech Content"
+        "post_id": 2,
+        "comment_text": "Subscribing to this Tech Content"
     },
     {
         "user_id": 3,
-        "blog_id": 3,
-        "comment": "This is an AMAZING update"
+        "post_id": 3,
+        "comment_text": "This is an AMAZING update"
     }
 ]

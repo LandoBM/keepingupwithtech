@@ -1,16 +1,16 @@
 [
     {
-        "blog_title": "GA Tech Bootcamp",
+        "title": "GA Tech Bootcamp",
         "post": "Love learning code with Stanley and TA's",
         "user_id": 1
     },
     {
-        "blog_title": "New Vlog",
+        "title": "New Vlog",
         "post": "Posting new content this week surrounding my Coding experience ",
         "user_id": 2
     },
     {
-        "blog_title": "PROJECTS",
+        "title": "PROJECTS",
         "post": "New Project to complete this week and I am nervous, but excited ",
         "user_id": 3
     }
