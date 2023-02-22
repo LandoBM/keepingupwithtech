@@ -7,12 +7,13 @@ router.post('/', withAuth, async (req, res) => {
       const commentData = await Comment.create({
         ...req.body,
         user_id: req.session.user_id,
+        post_id: req.params.id
       },
-      {
-        where: {
-          id: req.params.id
-        }
-      }
+      // {
+      //   where: {
+      //     id: req.params.id
+      //   }
+      // }
       );
       res.status(200).json(commentData);
     } catch (err) {
@@ -20,29 +21,28 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
-// router.post('/:id', withAuth, async(req,res)=> {
-//   try{
-//     const commentData = await Comment.create({
-//       ...req.body,
-//       user_id: req.session.user_test,
-//       blog_id: req.params.id
-//     })
-//     res.status(200).json(commentData)
-//   }catch(err){
-//     res.status(404).json(err)
-//   }
-// })
+router.post('/:id', withAuth, async(req,res)=> {
+  try{
+    const commentData = await Comment.create({
+      ...req.body,
+      user_id: req.session.user_test,
+      post_id: req.params.id
+    })
+    res.status(200).json(commentData)
+  }catch(err){
+    res.status(404).json(err)
+  }
+})
 
 router.delete('/:id', withAuth, async (req,res) => {
     try{
         const commentData = await Comment.destroy({
             where: {
-                id: req.params.id,
-                user_id: req.session.user_id
+               comment_id: req.params.id
             }
         })
 
-        if(!blogData) {
+        if(!commentData) {
             res.status(404).json({message: `There is no comment related to this id!`})
             return
         }

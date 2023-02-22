@@ -6,61 +6,71 @@
 </div>
 
 <div class="row mt-4">
-  {{!-- <div class="col-md-6">
+  <div class="col-md-6">
     <h3>What's on your mind?</h3>
 
-    <form class="form newPost-form">
+    <form class="form newPost">
       <div class="form-group">
         <label for="post-title">Topic:</label>
         <input class="form-input" type="text" id="post-title" name="post-title" />
       </div>
       <div class="form-group">
-        <label for="post">Description:</label>
-        <input class="form-input" type="text" id="post" name="post" placeholder="What's on your mind..."/>
+        <label for="post-text">Post:</label>
+        <textarea class="form-input" type="text" id="post-text" name="post-text" placeholder="What's on your mind..."></textarea>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary" data-id="{{id}}">Create Post</button>
       </div>
     </form>
-  </div> --}}
+  </div>
 
-  {{#if profiles.length}}
-  <div class="col-md-6 postList-form">
+  {{#if posts.length}}
+  <div class="col-md-6">
     <h3>Feed</h3>
     <h4>Posted by: {{name}}</h4>
-    {{#each profiles as |profile|}}
+    {{#each posts as |post|}}
+    {{!-- <ol>
+      <li>
+        {{post}}
+        <a href="/editpost/{{id}}"></a>
+      </li>
+    </ol> --}}
     <div class="row mb-2">
       <div class="col-md-8">
         <h4>
-            <a href="/profile/{{blog_id}}">
-            {{blog_title}}
+            <a href="/edit-post/{{id}}">
+            {{title}} 
             </a>
-            {{!-- <a>{{profile.post}}</a> --}}
+            <-- click to update post
         </h4>
-        <p>{{profile.post}}</p>
-        <h3>{{profile.date}}</h3>
+        <h3>{{post_text}}</h3>
+        <h4>{{comments.comment}}</h4>
+        <h3>{{date}}</h3>
+        {{!-- <p>{{post}}</p>
+        <h3>{{date}}</h3> --}}
       </div>
         <div class="col-md-4">
-         <button class="btn btn-sm btn-danger" data-id="{{profile.blog_id}}">DELETE</button>
+         <button class="btn btn-sm btn-danger deletePost" data-id="{{id}}">Delete</button>
         </div>
+          <div class="comForm"><a href="/comment/{{id}}"><button class="btn btn-sm btn-danger" data-id="{{id}}">Add Comment</button></a></div>
+        </div>
+      </div>
+      {{/each}}
+      {{else}}
+      <p>{{name}} has no Post!</p>
     </div>
-  </div>
-    {{/each}}
-    {{else}}
-    <p>{{name}} has no Post!</p>
-    {{!-- {{/if}} --}}
-    {{!-- {{#if comments.length}} --}}
-    {{!-- <div>
-        {{#each comments}}
-        <p>{{comment.blog_id}}</p>
-        {{/each}}
+    {{!-- <div id="deletePost">
+      {{#each comments}}
+      <p>{{comment_text}} by {{name}}</p>
+      <button class="btn btn-sm btn-danger" id="deletePost" data-id="{{comment_id}}">Delete Comment</button>
+      {{/each}}
     </div> --}}
-    <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{profile.blog_id}}">DELETE</button>
-    </div>
   </div>
+  {{!-- {{/each}} --}}
   {{/if}}
 </div>
 {{/if}}
 
-{{!-- <script src="./js/profile.js"></script> --}}
+<script src="./js/newpost.js"></script>
+<script src="/js/deletecom.js"></script>
+<script src="/js/deletepost.js"></script>

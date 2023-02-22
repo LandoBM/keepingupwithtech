@@ -1,17 +1,17 @@
 [
     {
         "title": "GA Tech Bootcamp",
-        "post": "Love learning code with Stanley and TA's",
+        "post_text": "Love learning code with Stanley and TA's",
         "user_id": 1
     },
     {
         "title": "New Vlog",
-        "post": "Posting new content this week surrounding my Coding experience ",
+        "post_text": "Posting new content this week surrounding my Coding experience ",
         "user_id": 2
     },
     {
         "title": "PROJECTS",
-        "post": "New Project to complete this week and I am nervous, but excited ",
+        "post_text": "New Project to complete this week and I am nervous, but excited ",
         "user_id": 3
     }
 ]

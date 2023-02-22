@@ -1,63 +1,46 @@
-{{!-- NEW CODE -A --}}
+{{! NEW CODE -A }}
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tech Blog Spot</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
 
-<body>
+  <body>
     <div>
-        <header>
-            <h1>Keeping Up With Tech</h1>
-            <nav>
-                {{#if logged_in}}
-                <a href="/">Home</a>
-                 <a href="/post">My Timeline</a>
-                 <a href="/blog">Create New Post</a>
-                <button class="no-button" id="logout">logout</button>
-                {{else}}
-                {{!-- <a href="/addpost">Create New Post</a> --}}
-                <a href="/login">Login</a>
-                <a href="/">Home</a>
-                {{!-- <a href="/">My Timeline</a> --}}
-                {{/if}}
-            </nav>
-        </header>
-        <div>
-            {{#if posts.length}}
-            <div>
-                <h2>Current Feed:</h2>
-                {{#each post}}
-                <div class="row mb-2 postList-form">
-                    <div class="col-md-8">
-                        <h3><a href="/post/{{id}}">{{title}}</a></h3>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <button class="btn btn-md" data-id="{{id}}">Remove</button>
-                </div>
-            {{/each}}
-            </div>
-            {{/if}}
-        </div>
-        <main>
-            {{{ body }}}
-        </main>
+      <header>
+        <h1>Keeping Up With Tech</h1>
+        <nav>
+          {{#if logged_in}}
+            <a href="/">Home</a>
+            <a href="/post">My Timeline</a>
+            {{! <a href="/">Create New Post</a> }}
+            <button class="no-button" id="logout">logout</button>
+          {{else}}
+            <button type="button"><a href="/login">Sign Up</a></button>
+            <a href="/login">Login</a>
+            <a href="/">Home</a>
+            {{! <a href="/">My Timeline</a> }}
+          {{/if}}
+        </nav>
+      </header>
+      <main>
+        {{{body}}}
+      </main>
 
-        <footer>
+      <footer>
 
-        </footer>
+      </footer>
 
     </div>
 
     {{#if logged_in}}
-    <script src="/js/logout.js"></script>
+      <script src="/js/logout.js"></script>
     {{/if}}
 
-</body>
+  </body>
 
 </html>
