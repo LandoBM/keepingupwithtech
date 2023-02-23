@@ -1,13 +1,14 @@
 const updatePostBtn = async (event) => {
     event. preventDefault()
 
-    let postTitle = document.querySelector('input[name="post-title"]').value
-    let post = document.querySelector('textarea[name="post-text"]').value
+    let postTitle = document.querySelector('.post-title').value
+    let post = document.querySelector('.post-text').value
 
-    if(event.target.hasAttribute('data.id')) {
-        const id = event.target.getAttribute('data-id')
+    if(event.target.hasAttribute('data-id')) {
+        // const id = event.target.getAttribute('data-id')
+        const id = document.querySelector('.btn').getAttribute('data-id')
 
-        const response = await fetch(`/api/post/edit-post/${id}`, {
+        const response = await fetch(`/api/post/${id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 postTitle,

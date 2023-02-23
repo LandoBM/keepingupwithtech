@@ -14,10 +14,6 @@ router.get('/', async (req, res) => {
         },
         {
           model: Comment,
-
-        },
-        {
-          model: Comment,
           attributes: ["id", "comment_text", "post_id", "user_id"],
           include: {
             model: User,
@@ -41,7 +37,15 @@ router.get('/post', withAuth, async(req, res) => {
   try {
       const userData = await User.findByPk(req.session.user_id, {
           attributes: { exclude: ['password']},
-          include: [{model: Post, attributes: ["id", "post_text", "title", "date"]}],
+          include: [
+            {model: Post, 
+              attributes: ["id", "post_text", "title", "date"]
+            },
+            {
+              model: Comment,
+              attributes: ["id", "comment_text", "post_id", "user_id"]
+            }
+          ], 
       })
 
       console.log(userData)
@@ -97,7 +101,7 @@ router.get('/edit-post', async(req, res) => {
   try {
       const postData = await Post.findByPk(req.session.user_id, {
           // attributes: { exclude: ['password']},
-          include: [{model: User }, {model: Comment}],
+          include: [{model: User, attributes: ["id", "name", "email"]}]
       })
 
       console.log(postData)
@@ -115,7 +119,7 @@ router.get('/edit-post', async(req, res) => {
 
 router.get("/edit-post/:id", async (req, res) => {
   try {
-    const postData = await Post.findOne(req.params.id, {
+    const postData = await Post.findByPk(req.params.id, {
       // where: {
       //   id: req.params.id,
       // },
@@ -166,7 +170,7 @@ router.get('/comment/:id', withAuth, async (req, res) => {
         },
         {
           model: Post,
-          attributes: ["id", "comment_text", "post_id", "user_id"],
+          attributes: ["id", "post_text", "title", "date"],
           include: {
             model: User,
             attributes: ["id", "name", "email"],
@@ -193,40 +197,24 @@ router.get('/comment/:id', withAuth, async (req, res) => {
   }
 });
 
-router.get("/userpost/:id", withAuth, async (req, res) => {
+router.get("/userpost", withAuth, async (req, res) => {
   try {
-    const commentData = await Comment.findByPk({
-      where: {
-        id: req.params.id,
-      },
-      attributes: ["id", "comment_text", "post_id", "user_id"],
-      include: [
-        {
-          model: User,
-          attributes: ["id", "name", "email"],
-        },
-        {
-          model: Post,
-          // attributes: ["id", "comment_text", "post_id", "user_id"],
-          include: {
-            model: User,
-            attributes: ["id", "name", "email"],
-            model: Comment,
-            attributes: ["id", "comment_text", "post_id", "user_id"]
-          },
-        },
-      ],
-    });
-    const comment = commentData.get({ plain: true });
-    console.log('COMMENT:', comment)
-    res.render("/", {
-      ...comment,
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
+    const postData = await Post.findByPk(req.session.user_id, {
+        // attributes: { exclude: ['password']},
+        include: [{model: User, attributes: ["id", "name", "email"]}]
+    })
+
+    console.log(postData)
+    const post = postData.get({ plain: true })
+    console.log(post)
+    res.render('post', {
+        ...post,
+        // logged_in: req.session.logged_in
+    })
+} catch(err) {
+    console.log(err)
+    res.status(500).json(err)
+}
 });
 
 router.get("/login", async (req, res) => {

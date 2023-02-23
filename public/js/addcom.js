@@ -20,25 +20,25 @@ const addCommentHandler = async (e) => {
     }
 }
 
-const delCommentHandler = async (event) => {
-    if (event.target.hasAttribute('data-id')) {
-        const id = event.target.getAttribute('data-id');
+// const delCommentHandler = async (event) => {
+//     if (event.target.hasAttribute('data-id')) {
+//         const id = event.target.getAttribute('data-id');
 
-        const response = await fetch(`/api/comment/${id}`, {
-            method: 'DELETE',
-            body: JSON.stringify({
-                id
-              }),
-        });
+//         const response = await fetch(`/api/comment/${id}`, {
+//             method: 'DELETE',
+//             body: JSON.stringify({
+//                 id
+//               }),
+//         });
 
-        if (response.ok) {
-            document.location.replace('/post');
-        } else {
-            alert('Failed to delete project');
-        }
-    }
-};
+//         if (response.ok) {
+//             document.location.replace('/post');
+//         } else {
+//             alert('Failed to delete comment');
+//         }
+//     }
+// };
 
-document.querySelector('#deleteCom').addEventListener('submit', delCommentHandler)
+// document.querySelector('#deleteCom').addEventListener('submit', delCommentHandler)
 
 document.querySelector('.comForm').addEventListener('submit', addCommentHandler)

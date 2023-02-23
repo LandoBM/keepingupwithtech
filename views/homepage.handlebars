@@ -6,11 +6,11 @@
       {{#each posts as |post|}}
         <div class="row mb-2 postList-form">
           <div class="col-md-8">
-            <h3><a href="/post /{{post_id}}">{{post.title}}</a></h3>
+            <h3><a href="/userpost/{{post_id}}">{{post.title}}</a></h3>
           </div>
           {{!-- {{#each comments}} --}}
           <div>
-            {{post_text}}
+            {{!-- {{post_text}} --}}
           </div>
           {{!-- {{/each}} --}}
         </div>
@@ -29,3 +29,4 @@
 {{!-- {{else}} --}}
 {{! <h4>There are no up to date post!</h4> }}
 {{!-- {{/each}} --}}
+<script src="/js/deletepost.js"></script>

@@ -1,41 +1,18 @@
-<div>
-    <h4><a href="/post">Back to Timeline</a></h4>
+
+<h2>Edit Post</h2>
+<input class="post-title" placeholder="{{post.title}}"/>
+<textarea class="post-text" placeholder="{{post.post_text}}"></textarea>
+<button data-id="{{post.post_id}}" type="submit" class="btn btn-primary editPost">Publish</button>
+
+<script src="/js/editpost.js"></script>
+
+{{!-- <h1>Edit Post</h1>
+<form class="" data-id="{{product.product_id}}">
+<div class="input-group">
+  <span class="input-group-text">Name and Condition:</span>
+  <input type="text" placeholder="{{product.product_name}}" class="form-control p-name">
+  <input type="text" placeholder="{{product.condition}}"class="form-control p-cond">
 </div>
-
-<section>
-    <h2>Edit Post</h2>
-    <form class="editPost">
-        <div>
-            <input name="post-title" type="text" placeholder="{{title}}"/>
-        </div>
-        <div>
-            <textarea name="post-text" placeholder="{{post_text}}"></textarea>
-        </div>
-        <div>
-            <a href="/post/{{post.id}}">{{post.comments.length}}</a>
-            <h3>Posted by {{user.email}} {{post.created_at}}</h3>
-        </div>
-    </form>
-</section>
-
-{{!-- <div id="deletePost">
-<h2>
-    {{#each comments}}
-    <p>
-       comment: {{comment}}
-    </p>  
-        <button class="btn btn-sm btn-danger" id="deletePost" data-id="{{id}}" id="" >DELETE COMMENT</button>
-    {{/each}}
-    </h2>
-    </div>
-    
-<form class="addCom">
-    <div class="input-group mb-3">
-        <button class="btn btn-outline-secondary" id="button-addon1" data-id="{{post_id}}">Add comment</button>
-        <input type="text" class="form-control" placeholder="{{comment_text}}" aria-describedby="button-addon1" id="addCom" height="55" width="100%">
-    </div>
-</form> --}}
-
-{{!-- <script src="/js/edit-post.js"></script>
-<script src="/js/addcom.js"></script>
-<script src="/js/deletepost.js"></script> --}}
+<button data-id="{{product.product_id}}" type="submit" class="btn btn-primary update-prod" id="updateprod-btn">Publish</button>
+</form>
+<script src="/js/updateprod.js"></script> --}}

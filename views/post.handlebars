@@ -5,7 +5,7 @@
   </div>
 </div>
 
-<div class="row mt-4">
+{{!-- <div class="row mt-4">
   <div class="col-md-6">
     <h3>What's on your mind?</h3>
 
@@ -23,7 +23,7 @@
       </div>
     </form>
   </div>
-</div>
+</div> --}}
 {{#if posts.length}}
 <div class="col-md-6">
     <h3>Feed</h3>
@@ -37,18 +37,29 @@
             </a>
             <-- click to update post
         </h4>
-        <h3>{{post_text}}</h3>
-        {{!-- <h4>{{comments.comment}}</h4> --}}
+        {{!-- <div class="col-md-4">
+         <button class="btn btn-sm btn-danger deletePost" data-id="{{post_id}}">Delete</button>
+        </div> --}}
+      </div>
+        {{/each}}
+        {{!-- <h3>{{post_text}}</h3> --}}
+        <h4>Comments:</h4>
+        {{#each comments}}
+        <h4>{{comment_text}}</h4>
+        <form id="deleteCom" data-id="{{id}}">
+          <button type="submit" class="btn btn-sm btn-danger" data-id="{{id}}">Delete Comment</button>
+        </form>
+        {{/each}}
         <h3>{{date}}</h3>
         {{!-- <p>{{post}}</p>
         <h3>{{date}}</h3> --}}
       </div
-        <div class="col-md-4">
+        {{!-- <div class="col-md-4">
          <button class="btn btn-sm btn-danger deletePost" data-id="{{post_id}}">Delete</button>
-        </div>
-    </div>
+        </div> --}}
+      </div>
 </div>
-{{/each}}
+{{!-- {{/each}} --}}
 {{/if}}
 {{!-- <form class="comForm"> --}}
   {{!-- <div class="input-group mb-3"> --}}
@@ -63,8 +74,6 @@
 {{!-- {{/if}} --}}
 {{/if}}
 
-{{!-- <script src="./js/newpost.js"></script>
 <script src="/js/deletecom.js"></script>
-<script src="/js/deletepost.js"></script> --}}
 
-<script src="/js/addcom.js"></script>
+
