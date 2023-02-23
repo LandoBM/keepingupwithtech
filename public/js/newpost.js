@@ -2,8 +2,8 @@ const newFormHandler = async(event) => {
     event.preventDefault()
 
 
-    const title = document.querySelector('input[name="post-title"]').value.trim();
-    const post = document.querySelector('textarea[name="post-text"]').value.trim();
+    const title = document.querySelector('input[name="post-title"]').value;
+    const post = document.querySelector('textarea[name="post-text"]').value;
 
     if (title && post) {
     const response = await fetch(`/api/posts`, {
@@ -17,7 +17,7 @@ const newFormHandler = async(event) => {
     console.log(response)
 
     if (response.ok) {
-      document.location.replace('/');
+      document.location.replace('/post');
     } else {
       alert('Cannot Add Post');
     }

@@ -8,6 +8,11 @@
           <div class="col-md-8">
             <h3><a href="/post /{{post_id}}">{{post.title}}</a></h3>
           </div>
+          {{!-- {{#each comments}} --}}
+          <div>
+            {{post_text}}
+          </div>
+          {{!-- {{/each}} --}}
         </div>
         <div class="col-md-4">
           <button class="btn btn-md" data-id="{{post_id}}">Remove</button>

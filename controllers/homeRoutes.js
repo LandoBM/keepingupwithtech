@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Post, User, Comment } = require("../models");
+const { Post, User, Comment } = require('../models')
 const withAuth = require("../utils/auth");
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
       attributes: ["id", "post_text", "title", "date"],
@@ -12,14 +12,18 @@ router.get("/", async (req, res) => {
           model: User,
           attributes: ["id", "name", "email"],
         },
-        // {
-        //   model: Comment,
-        //   attributes: ["id", "comment_text", "post_id", "user_id"],
-        //   include: {
-        //     model: User,
-        //     attributes: ["id", "name", "email"],
-        //   },
-        // },
+        {
+          model: Comment,
+
+        },
+        {
+          model: Comment,
+          attributes: ["id", "comment_text", "post_id", "user_id"],
+          include: {
+            model: User,
+            attributes: ["id", "name", "email"],
+          },
+        },
       ],
     });
     const posts = postData.map(posts => posts.get({ plain: true }));
@@ -37,7 +41,7 @@ router.get('/post', withAuth, async(req, res) => {
   try {
       const userData = await User.findByPk(req.session.user_id, {
           attributes: { exclude: ['password']},
-          include: [{model: Post },{model:Comment}],
+          include: [{model: Post, attributes: ["id", "post_text", "title", "date"]}],
       })
 
       console.log(userData)
@@ -53,49 +57,14 @@ router.get('/post', withAuth, async(req, res) => {
   }
 })
 
-// router.get('/', async (req, res) => {
-//     try{
-//       const commentData = await Comment.findAll({
-//         attributes: ['id', 'comment_text', 'post_id', 'user_id'],
-//         include: [
-//              {
-//                  model: User,
-//                  attributes: ['id', 'name', 'email']
-//              },
-//              {
-//                  model: Post,
-//                  attributes: [
-//                     'id',
-//                     'post_text',
-//                     'title',
-//                     'date',
-//                   ],
-//                  include: {
-//                      model: User,
-//                      attributes: ['id', 'name', 'email']
-//                  }
-//              }
-//          ]
-//      })
-//        const comments = commentData.map(comment => comment.get({ plain: true }));
-//        res.render('homepage', {
-//          comments,
-//          loggedIn: req.session.loggedIn
-//        })
-//      }catch(err) {
-//          console.log(err);
-//          res.status(500).json(err);
-//      }
-//  });
-
 // Render the single post page
-router.get("/post/:id", withAuth, async (req, res) => {
+router.get('/post/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       // where: {
       //   id: req.params.id,
       // },
-      // attributes: ["id", "post_text", "title", "date"],
+      attributes: ["id", "post_text", "title", "date"],
       include: [
         {
           model: User,
@@ -103,10 +72,10 @@ router.get("/post/:id", withAuth, async (req, res) => {
         },
         {
           model: Comment,
-          // attributes: ["id", "comment_text", "post_id", "user_id"],
+          attributes: ["id", "comment_text", "post_id", "user_id"],
           include: {
             model: User,
-            // attributes: ["id", "name", "email"],
+            attributes: ["id", "name", "email"],
             // model: Post,
           },
         },
@@ -114,7 +83,7 @@ router.get("/post/:id", withAuth, async (req, res) => {
     });
     const post = postData.get({ plain: true });
     console.log('POST:', post)
-    res.render("post", {
+    res.render('post', {
       ...post,
       logged_in: req.session.logged_in,
     });
@@ -178,14 +147,14 @@ router.get("/edit-post/:id", async (req, res) => {
   }
 });
 
-router.get("/comment/:id", withAuth, async (req, res) => {
+router.get('/comment/:id', withAuth, async (req, res) => {
   try {
     const commentData = await Comment.findByPk(req.params.id, {
       // where: {
       //   id: req.params.id,
       // },
       attributes: [
-        'comment_id',
+        'id',
         'user_id',
         'post_id',
         'comment_text'
@@ -203,7 +172,7 @@ router.get("/comment/:id", withAuth, async (req, res) => {
             attributes: ["id", "name", "email"],
             model: Comment,
             attributes: [
-              'comment_id',
+              'id',
               'user_id',
               'post_id',
               'comment_text'
@@ -214,7 +183,7 @@ router.get("/comment/:id", withAuth, async (req, res) => {
     });
     const comment = commentData.get({ plain: true });
     console.log('COMMENT:', comment)
-    res.render("comment", {
+    res.render('comment', {
       ...comment,
       logged_in: req.session.logged_in,
     });
