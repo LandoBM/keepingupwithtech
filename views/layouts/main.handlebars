@@ -17,14 +17,12 @@
           {{#if logged_in}}
             <a href="/">Home</a>
             <a href="/post">My Timeline</a>
-            <a href="/newpost">Create New Post</a>
-            {{! <a href="/">Create New Post</a> }}
+            <a href="/newpost/{{id}}">Create New Post</a>
             <button class="no-button" id="logout">logout</button>
           {{else}}
             <button type="button"><a href="/login">Sign Up</a></button>
             <a href="/login">Login</a>
             <a href="/">Home</a>
-            {{! <a href="/">My Timeline</a> }}
           {{/if}}
         </nav>
       </header>

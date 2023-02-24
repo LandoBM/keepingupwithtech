@@ -24,6 +24,7 @@
     </form>
   </div>
 </div> --}}
+{{!-- <a href="/newpost">Create New Post</a> --}}
 {{#if posts.length}}
 <div class="col-md-6">
     <h3>Feed</h3>
@@ -37,17 +38,17 @@
             </a>
             <-- click to update post
         </h4>
-        {{!-- <div class="col-md-4">
-         <button class="btn btn-sm btn-danger deletePost" data-id="{{post_id}}">Delete</button>
-        </div> --}}
+        <div class="col-md-4">
+         <button class="btn btn-sm btn-danger deletePost" data-id="{{id}}">Delete</button>
+        </div>
       </div>
         {{/each}}
         {{!-- <h3>{{post_text}}</h3> --}}
         <h4>Comments:</h4>
         {{#each comments}}
         <h4>{{comment_text}}</h4>
-        <form id="deleteCom" data-id="{{id}}">
-          <button type="submit" class="btn btn-sm btn-danger" data-id="{{id}}">Delete Comment</button>
+        <form>
+          <button type="submit" class="btn btn-sm btn-danger deleteCom" data-id="{{id}}">Delete Comment</button>
         </form>
         {{/each}}
         <h3>{{date}}</h3>
@@ -69,11 +70,11 @@
   {{!-- </div> --}}
 </form>
 {{!-- {{/each}} --}}
-{{else}}
-<p>{{name}} has no Post!</p>
+{{!-- {{else}} --}}
+{{!-- <p>{{name}} has no Post!</p> --}}
 {{!-- {{/if}} --}}
 {{/if}}
 
-<script src="/js/deletecom.js"></script>
+<script src="/js/newpost.js"></script>
 
 
