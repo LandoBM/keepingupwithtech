@@ -6,6 +6,7 @@ router.post('/', withAuth, async (req, res) => {
     try {
       const commentData = await Comment.create({
         ...req.body,
+        comment_text: req.body.comment_text,
         user_id: req.session.user_id,
         post_id: req.params.id
       },
@@ -36,18 +37,33 @@ router.get('/comment', async (req, res) => {
   }
 })
 
-// router.post('/:id', withAuth, async(req,res)=> {
-//   try{
-//     const commentData = await Comment.create({
-//       ...req.body,
-//       user_id: req.session.user_test,
-//       post_id: req.params.id
-//     })
-//     res.status(200).json(commentData)
-//   }catch(err){
-//     res.status(404).json(err)
-//   }
-// })
+router.post('/comment/:id', async(req, res) => {
+  try{
+    const commentData = await Comment.create({
+      ...req.body,
+      user_id: req.session.user_id,
+      post_id: req.params.id,
+      comment_text: req.body.comment_text
+    })
+    res.status(200).json(commentData)
+    console.log(commentData)
+  } catch (err) {
+    res.status(404).json(err)
+  }
+})
+
+router.post('/:id', withAuth, async(req,res)=> {
+  try{
+    const commentData = await Comment.create({
+      ...req.body,
+      user_id: req.session.user_test,
+      post_id: req.params.id
+    })
+    res.status(200).json(commentData)
+  }catch(err){
+    res.status(404).json(err)
+  }
+})
 
 router.delete('/:id', withAuth, async (req,res) => {
     try{
