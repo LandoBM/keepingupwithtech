@@ -1,13 +1,13 @@
 const addCommentHandler = async (e) => {
     e.preventDefault()
     const id = document.querySelector('.btn').getAttribute('data-id')
-    const comment = document.querySelector('.commentBody').value.trim()
+    const comment_text = document.querySelector('.commentBody').value.trim()
     // const id = document.querySelector('.btn').getAttribute('data-id')
 
-    if (comment) {
-        const response = await fetch (`/api/comments/${id}`, {
+    if (comment_text) {
+        const response = await fetch (`/api/comments`, {
             method: 'POST',
-            body: JSON.stringify({comment_text: comment, user: id}),
+            body: JSON.stringify({comment_text}),
             headers: {
                 'Context-Type': 'application/json'
             },
