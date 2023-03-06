@@ -5,40 +5,19 @@ const addCommentHandler = async (e) => {
     // const id = document.querySelector('.btn').getAttribute('data-id')
 
     if (comment_text) {
-        const response = await fetch (`/api/comments`, {
+        const response = await fetch (`/api/${id}`, {
             method: 'POST',
-            body: JSON.stringify({comment_text}),
+            body: JSON.stringify({comments: comment_text, user_id: id}),
             headers: {
                 'Context-Type': 'application/json'
             },
         })
         if (response.ok) {
-            document.location.replace('/posts')
+            document.location.replace('/')
         } else {
             alert('Cannot add Comment')
         }
     }
 }
-
-// const delCommentHandler = async (event) => {
-//     if (event.target.hasAttribute('data-id')) {
-//         const id = event.target.getAttribute('data-id');
-
-//         const response = await fetch(`/api/comment/${id}`, {
-//             method: 'DELETE',
-//             body: JSON.stringify({
-//                 id
-//               }),
-//         });
-
-//         if (response.ok) {
-//             document.location.replace('/post');
-//         } else {
-//             alert('Failed to delete comment');
-//         }
-//     }
-// };
-
-// document.querySelector('#deleteCom').addEventListener('submit', delCommentHandler)
 
 document.querySelector('.comForm').addEventListener('submit', addCommentHandler)

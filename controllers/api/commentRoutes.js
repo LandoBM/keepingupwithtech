@@ -7,8 +7,9 @@ router.post('/', withAuth, async (req, res) => {
       const commentData = await Comment.create({
         ...req.body,
         comment_text: req.body.comment_text,
-        user_id: req.session.user_id,
-        post_id: req.params.id
+        // user_id: req.session.user_id,
+        id: req.params.id,
+        id: req.query.id
       },
       // {
       //   where: {
@@ -24,7 +25,11 @@ router.post('/', withAuth, async (req, res) => {
 
 router.get('/comment', async (req, res) => {
   try {
-    const commentData = await Comment.findAll()
+    const commentData = await Comment.findByPk(req.params.id, {
+      where: {
+        id: req.query.id
+      }
+    })
     const comment = commentData.get({plain: true})
     res.render(comment , {
       ...comment,
@@ -42,7 +47,7 @@ router.post('/comment/:id', async(req, res) => {
     const commentData = await Comment.create({
       ...req.body,
       user_id: req.session.user_id,
-      post_id: req.params.id,
+      id: req.params.id,
       comment_text: req.body.comment_text
     })
     res.status(200).json(commentData)
@@ -57,7 +62,7 @@ router.post('/:id', withAuth, async(req,res)=> {
     const commentData = await Comment.create({
       ...req.body,
       user_id: req.session.user_test,
-      post_id: req.params.id
+      id: req.params.id
     })
     res.status(200).json(commentData)
   }catch(err){

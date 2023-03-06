@@ -1,7 +1,14 @@
+{{!-- {{#each comments}} --}}
+<h4>Existing Comments:</h4>
+<ol>
+    <li>{{comment_text}} by {{user.name}}</li>
+</ol>
+{{!-- {{/each}} --}}
+
 <h3>Comment:</h3>
 <form class="comForm">
     <textarea placeholder="Add Comment!" class="commentBody"></textarea>
-    <button type="submit" class="btn btn-primary " data-id="{{id}}">Add</button>
+    <button type="submit" class="btn btn-primary commentBody" data-id="{{id}}">Add</button>
 </form>
 
 <script src="/js/addcom.js"></script>
