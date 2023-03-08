@@ -1,5 +1,12 @@
 
 <h2>Edit Post</h2>
+<h3>{{post.title}}</h3>
+<p>{{post.post_text}}</p>
+{{!-- {{#if comments}} --}}
+{{!-- <ol>
+    <li>{{comments.comment_text}} by {{user.name}}</li>
+</ol> --}}
+{{!-- {{/if}} --}}
 <input class="post-title" placeholder="{{post.title}}"/>
 <textarea class="post-text" placeholder="{{post.post_text}}"></textarea>
 <button data-id="{{post.post_id}}" type="submit" class="btn btn-primary editPost">Update</button>

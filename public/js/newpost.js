@@ -1,6 +1,6 @@
-document.querySelector('.newPost').addEventListener('submit', newFormHandler)
-document.querySelector('.deletePost').addEventListener('click', delButtonHandler)
-document.querySelector('#deleteCom').addEventListener('submit', delCommentHandler)
+// document.querySelector('.newPost').addEventListener('submit', newFormHandler)
+// document.querySelector('.deletePost').addEventListener('click', delButtonHandler)
+// document.querySelector('#deleteCom').addEventListener('submit', delCommentHandler)
 
 
 
@@ -32,43 +32,43 @@ const newFormHandler = async(event) => {
 }
 // document.querySelector('.newPost').addEventListener('submit', newFormHandler)
 
-const delButtonHandler = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
+// const delButtonHandler = async (event) => {
+//   if (event.target.hasAttribute('data-id')) {
+//     const id = event.target.getAttribute('data-id');
 
-    const response = await fetch(`/api/posts/${id}`, {
-      method: 'DELETE',
-    });
+//     const response = await fetch(`/api/posts/${id}`, {
+//       method: 'DELETE',
+//     });
 
-    if (response.ok) {
-      document.location.replace('/post');
-    } else {
-      alert('Failed to delete project');
-    }
-  }
-};
+//     if (response.ok) {
+//       document.location.replace('/post');
+//     } else {
+//       alert('Failed to delete project');
+//     }
+//   }
+// };
 
 
 // document.querySelector('.deletePost').addEventListener('click', delButtonHandler)
-// document.querySelector('.newPost').addEventListener('submit', newFormHandler)
+document.querySelector('.newPost').addEventListener('submit', newFormHandler)
 
-const delCommentHandler = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
-      const id = event.target.getAttribute('data-id');
+// const delCommentHandler = async (event) => {
+//   if (event.target.hasAttribute('data-id')) {
+//       const id = event.target.getAttribute('data-id');
 
-      const response = await fetch(`/api/comments/${id}`, {
-          method: 'DELETE',
-          body: JSON.stringify({
-              id
-            }),
-      });
+//       const response = await fetch(`/api/comments/${id}`, {
+//           method: 'DELETE',
+//           body: JSON.stringify({
+//               id
+//             }),
+//       });
 
-      if (response.ok) {
-          document.location.replace('/post');
-      } else {
-          alert('Failed to delete comment');
-      }
-  }
-};
+//       if (response.ok) {
+//           document.location.replace('/post');
+//       } else {
+//           alert('Failed to delete comment');
+//       }
+//   }
+// };
 
 // document.querySelector('#deleteCom').addEventListener('submit', delCommentHandler)

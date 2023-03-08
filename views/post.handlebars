@@ -25,33 +25,43 @@
   </div>
 </div> --}}
 {{!-- <a href="/newpost">Create New Post</a> --}}
-{{#if posts.length}}
+{{!-- {{#if posts.length}} --}}
 <div class="col-md-6">
     <h3>Feed</h3>
     <h4>Posted by: {{name}}</h4>
     {{#each posts as |post|}}
+    {{!-- {{#each comments}} --}}
     <div class="row mb-2" id="deleteCom">
       <div class="col-md-8">
+        <h5>Created on {{date}}</h5>
         <h4>
             <a href="/edit-post/{{id}}">
             {{title}} 
             </a>
             <-- click to update post
         </h4>
+        {{!-- {{/each}} --}}
         <div class="col-md-4">
          <button class="btn btn-sm btn-danger deletePost" data-id="{{id}}">Delete</button>
         </div>
       </div>
-        {{/each}}
+      {{!-- {{/each}} --}}
+        {{!-- {{/each}} --}}
         {{!-- <h3>{{post_text}}</h3> --}}
         <h4>Comments:</h4>
-        {{#each comments}}
-        <h4>{{comment_text}}</h4>
+        {{#each ../comments}}
+        <p>{{comment_text}} by {{email}}</p>
+        {{/each}}
         <form>
           <button type="submit" class="btn btn-sm btn-danger deleteCom" data-id="{{id}}">Delete Comment</button>
+          {{!-- <a href="/comment/{{id}}"><button class="btn btn-sm btn-danger" data-id="{{id}}">ADD COMMENT</button></a> --}}
+          {{!-- <div class="comForm"><a href="/comment/{{id}}"><button class="btn btn-sm btn-danger" data-id="{{id}}">Add Comment</button></a></div> --}}
         </form>
-        {{/each}}
-        <h3>{{date}}</h3>
+        {{!-- {{/each}} --}}
+          <div class="comForm"><a href="/comment/{{id}}"><button class="btn btn-sm btn-danger" data-id="{{id}}">Add Comment</button></a></div>
+        {{!-- {{/each}} --}}
+        {{!-- {{/each}} --}}
+        {{!-- <h3>{{date}}</h3> --}}
         {{!-- <p>{{post}}</p>
         <h3>{{date}}</h3> --}}
       </div
@@ -60,12 +70,13 @@
         </div> --}}
       </div>
 </div>
-{{/if}}
-    <div class="comForm"><a href="/comment/{{id}}"><button class="btn btn-sm btn-danger" data-id="{{id}}">ADD COMMENT</button></a></div>
-</form>
+{{!-- {{/if}} --}}
+    {{!-- <div class="comForm"><a href="/comment/{{id}}"><button class="btn btn-sm btn-danger" data-id="{{id}}">ADD COMMENT</button></a></div>
+</form> --}}
+{{/each}}
 {{/if}}
 
-<script src="/js/newpost.js"></script>
-{{!-- <script src="/js/deletecom.js"></script> --}}
+{{!-- <script src="/js/newpost.js"></script> --}}
+<script src="/js/deletepost.js"></script>
 
 
