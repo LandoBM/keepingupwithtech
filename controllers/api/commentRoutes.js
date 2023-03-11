@@ -46,11 +46,11 @@ router.post('/:id', async(req, res) => {
   console.log(req.body, req.params.id,"=======")
   try{
     const commentData = await Comment.create({
-      // ... req.body,
+      // ...req.body,
+      comment_text: req.body.comment_text,
       user_id: req.query.user_id,
-      post_id: req.params.id,
-      // comment_text: req.body.comment_text
-      // comment_text: req.body.comment_text
+      id: req.params.id,
+    
     })
     res.status(200).json(commentData)
     console.log(commentData)

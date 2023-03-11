@@ -3,9 +3,9 @@
 <h2>{{post.title}}</h2>
 <p>{{post.post_text}}</p>
 <h4>Existing Comments:</h4>
-<ol>
-    <li>{{comment_text}} by {{user.name}}</li>
-</ol>
+{{#each comments}}
+ <p>{{comment_text}}</p>
+{{/each}}
 {{!-- {{/each}} --}}
 
 <h3>Comment:</h3>
