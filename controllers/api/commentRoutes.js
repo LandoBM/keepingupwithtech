@@ -42,23 +42,37 @@ router.get('/comment', async (req, res) => {
   }
 })
 
-router.post('/:id', async(req, res) => {
-  console.log(req.body, req.params.id,"=======")
-  try{
-    const commentData = await Comment.create({
-      // ...req.body,
-      comment_text: req.body.comment_text,
-      user_id: req.query.user_id,
-      id: req.params.id,
+// router.post('/:id', async(req, res) => {
+//   console.log(req.body, req.params.id,"=======")
+//   try{
+//     const commentData = await Comment.create({
+//       // ...req.body,
+//       comment_text: req.body.comment_text,
+//       user_id: req.query.user_id,
+//       id: req.params.id,
     
-    })
-    res.status(200).json(commentData)
-    console.log(commentData)
+//     })
+//     res.status(200).json(commentData)
+//     console.log(commentData)
+//   } catch (err) {
+//     console.log(err)
+//     res.status(404).json(err)
+//   }
+// })
+
+router.post('/:id', withAuth, async (req, res) => {
+  console.log(req.body, req.params.id,"=======")
+  try {
+    const commentData = await Comment.create({
+      comment_text: req.body.comment_text,
+      user_id: req.session.user_id,
+      id: req.params.id
+    });
+    res.status(200).json(commentData);
   } catch (err) {
-    console.log(err)
-    res.status(404).json(err)
+    res.status(400).json(err);
   }
-})
+});
 
 // router.post('/:id', withAuth, async(req,res)=> {
 //   console.log(req.body, req.params.id,"=======")
