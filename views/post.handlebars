@@ -33,7 +33,7 @@
     {{!-- {{#each comments}} --}}
     <div class="row mb-2" id="deleteCom">
       <div class="col-md-8">
-        <h5>Created on {{date}}</h5>
+        {{!-- <h5>Created on {{date}}</h5> --}}
         <h4>
             <a href="/edit-post/{{id}}">
             {{title}} 
@@ -48,17 +48,19 @@
       {{!-- {{/each}} --}}
         {{!-- {{/each}} --}}
         {{!-- <h3>{{post_text}}</h3> --}}
-        <h4>Comments:</h4>
-        {{#each ../comments}}
-        <p>{{comment_text}} by {{email}}</p>
-        {{/each}}
+        {{!-- <h4>Comments:</h4> --}}
+        {{!-- {{#each ../comments}} --}}
+        {{!-- {{#with users}} --}}
+        {{!-- <p>{{comment_text}} by {{email}}</p> --}}
+        {{!-- {{/with}} --}}
+        {{!-- {{/each}} --}}
         <form>
-          <button type="submit" class="btn btn-sm btn-danger deleteCom" data-id="{{id}}">Delete Comment</button>
+          {{!-- <button type="submit" class="btn btn-sm btn-danger deleteCom" data-id="{{id}}">Delete Comment</button> --}}
           {{!-- <a href="/comment/{{id}}"><button class="btn btn-sm btn-danger" data-id="{{id}}">ADD COMMENT</button></a> --}}
           {{!-- <div class="comForm"><a href="/comment/{{id}}"><button class="btn btn-sm btn-danger" data-id="{{id}}">Add Comment</button></a></div> --}}
         </form>
         {{!-- {{/each}} --}}
-          <div class="comForm"><a href="/comment/{{id}}"><button class="btn btn-sm btn-danger" data-id="{{id}}">Add Comment</button></a></div>
+          {{!-- <div class="comForm"><a href="/comment/{{id}}"><button class="btn btn-sm btn-danger" data-id="{{id}}">Add Comment</button></a></div> --}}
         {{!-- {{/each}} --}}
         {{!-- {{/each}} --}}
         {{!-- <h3>{{date}}</h3> --}}

@@ -19,9 +19,31 @@ const updatePostBtn = async (event) => {
             }
         })
         if (response.ok){
-            document.location.replace('/')
+            document.location.replace('/edit-post')
         } else {
             alert(response.statusText)
+        }
+    }
+}
+
+const addCommentHandler = async (e) => {
+    e.preventDefault()
+    const id = document.querySelector('.btn').getAttribute('data-id')
+    const comment_text = document.querySelector('.commentBody').value.trim()
+    // const id = document.querySelector('.btn').getAttribute('data-id')
+    console.log(id, comment_text)
+    if (comment_text) {
+        const response = await fetch (`/api/comments/${id}`, {
+            method: 'POST',
+            body: JSON.stringify({comment_text}),
+            headers: {
+                'Context-Type': 'application/json'
+            },
+        })
+        if (response.ok) {
+            document.location.replace('/edit-post')
+        } else {
+            alert('Cannot add Comment')
         }
     }
 }
@@ -29,3 +51,11 @@ const updatePostBtn = async (event) => {
 document
 .querySelector('.editPost')
 .addEventListener('click', updatePostBtn)
+
+document
+.querySelector('.comForm')
+.addEventListener('submit', addCommentHandler)
+
+// document
+// .querySelector('.editPost')
+// .addEventListener('click', updatePostBtn)

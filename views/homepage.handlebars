@@ -10,13 +10,14 @@
           </div>
           {{!-- {{#each comments}} --}}
           <div>
-            {{!-- {{post_text}} --}}
+            <h4>Posted by: {{user.name}}, {{user.email}}</h4>
+            <h5>Posted on: {{format_date date}}</h5>
           </div>
           {{!-- {{/each}} --}}
         </div>
-        <div class="col-md-4">
-          <button class="btn btn-md" data-id="{{post_id}}">Remove</button>
-        </div>
+        {{!-- <div class="col-md-4">
+          <button data-id="{{post_id}}" type="submit" class="btn btn-primary deletePost">Delete</button>
+        </div> --}}
       {{/each}}
     </div>
   {{/if}}
@@ -29,4 +30,4 @@
 {{!-- {{else}} --}}
 {{! <h4>There are no up to date post!</h4> }}
 {{!-- {{/each}} --}}
-<script src="/js/deletepost.js"></script>
+{{!-- <script src="/js/deletepost.js"></script> --}}
