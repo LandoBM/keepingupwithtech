@@ -1,12 +1,4 @@
-# 14 Model-View-Controller (MVC): Tech Blog
-
-## Your Task
-
-Writing about tech can be just as important as making it. Developers spend plenty of time creating new applications and debugging existing codebases, but most developers also spend at least some of their time reading and writing about technical concepts, recent advancements, and new technologies. A simple Google search for any concept covered in this course returns thousands of think pieces and tutorials from developers of all skill levels!
-
-Your task this week is to build a CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well. You’ll build this site completely from scratch and deploy it to Heroku. Your app will follow the MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication.
-
-  # Keeping Up With Tech - MVC
+# Keeping Up With Tech - MVC
   ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
   ## Table of Contents
@@ -24,9 +16,8 @@ Your task this week is to build a CMS-style blog site similar to a Wordpress sit
 
     
   ## Description
-  ```
+    
     This app is a CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well. This app uses MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication.
-  ```
 
   ## User Story
 
@@ -72,13 +63,12 @@ Your task this week is to build a CMS-style blog site similar to a Wordpress sit
     THEN I am signed out of the site
     WHEN I am idle on the site for more than a set time
     THEN I am able to view comments but I am prompted to log in again before I can add, update, or delete comments
-```
- 
-  
-  ## Installation
+    ```
+
+    ## Installation
   To install, clone the repo and in your terminal code `npm i` to download node_modules and run `npm start`.
 
-  ## Usage
+    ## Usage
    
     This app is a CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well. This app uses MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication.
   
